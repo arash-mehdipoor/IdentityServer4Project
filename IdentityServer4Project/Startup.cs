@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using static IdentityServer4.IdentityServerConstants;
 
 namespace IdentityServer4Project
 {
@@ -48,9 +49,29 @@ namespace IdentityServer4Project
                 .AddInMemoryApiResources(new List<ApiResource>()
                 {
                 })
+                .AddInMemoryIdentityResources(new List<IdentityResource>()
+                {
+                    new IdentityResources.OpenId(),
+                    new IdentityResources.Email(),
+                    new IdentityResources.Profile(),
+                    new IdentityResources.Address(),
+                    new IdentityResources.Phone()
+                })
                 .AddInMemoryClients(new List<Client>()
                 {
-                    new Client{ }
+                    new Client{
+                        ClientId="WebsiteId",
+                        ClientSecrets=new List<Secret>(){new Secret("123456".Sha256()) },
+                        AllowedGrantTypes=GrantTypes.Implicit,
+                        RedirectUris={""},
+                        PostLogoutRedirectUris={""},
+                        AllowedScopes = new List<string>()
+                        {
+                            StandardScopes.OpenId,
+                            StandardScopes.Profile,
+                            StandardScopes.Email
+                        }
+                    }
                 });
         }
 
