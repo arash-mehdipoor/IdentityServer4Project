@@ -1,3 +1,5 @@
+using IdentityServer4.Models;
+using IdentityServer4.Test;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +26,19 @@ namespace IdentityServer4Project
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddIdentityServer()
+                .AddDeveloperSigningCredential()
+                .AddTestUsers(new List<TestUser>()
+                {
+
+                })
+                .AddInMemoryApiResources(new List<ApiResource>()
+                {
+                })
+                .AddInMemoryClients(new List<Client>()
+                {
+                    new Client{ }
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +59,7 @@ namespace IdentityServer4Project
 
             app.UseRouting();
 
+            app.UseIdentityServer();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
