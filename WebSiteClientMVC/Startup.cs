@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.OAuth.Claims;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -8,7 +10,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 namespace WebSiteClientMVC
 {
     public class Startup
@@ -24,6 +25,24 @@ namespace WebSiteClientMVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = "Cookies";
+                options.DefaultChallengeScheme = "oidc";
+
+            })
+            .AddCookie("Cookies", options =>
+            {
+                options.Cookie.Name = ".MySite.Cookie";
+            })
+          .AddOpenIdConnect("oidc", option =>
+          {
+              option.Authority = "https://localhost:44356/";
+              option.ClientId = "ClientWebsiteId";
+              option.GetClaimsFromUserInfoEndpoint = true;
+              option.SignInScheme = "Cookies";
+          });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +62,8 @@ namespace WebSiteClientMVC
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["Title"] = "UserPanel";
+}
+
+
+<table>
+    <tr>
+        <td></td>
+        <td></td>
+    </tr>
+    <tbody>
+        @foreach (var item in User.Claims)
+        {
+            <tr>
+                <td>@item.Type</td>
+                <td>@item.Value</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+

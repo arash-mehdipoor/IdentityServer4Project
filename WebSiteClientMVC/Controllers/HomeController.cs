@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using WebSiteClientMVC.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using WebSiteClientMVC.Models;
 
 namespace WebSiteClientMVC.Controllers
 {
@@ -17,12 +18,16 @@ namespace WebSiteClientMVC.Controllers
         {
             _logger = logger;
         }
-
-        public IActionResult Index()
+         public IActionResult Index()
         {
             return View();
         }
-
+        [Authorize]
+        public IActionResult UserPanel()
+        {
+            return View();
+        }
+        [Authorize]
         public IActionResult Privacy()
         {
             return View();
