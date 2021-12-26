@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace IdentityServer4Project
@@ -30,7 +31,19 @@ namespace IdentityServer4Project
                 .AddDeveloperSigningCredential()
                 .AddTestUsers(new List<TestUser>()
                 {
-
+                    new TestUser()
+                    {
+                        SubjectId = "1",
+                        Username = "ArashM",
+                        IsActive = true,
+                        Password = "123456",
+                        Claims = new List<Claim>()
+                        {
+                            new Claim(ClaimTypes.Email,"arash@gmail.com"),
+                            new Claim(ClaimTypes.MobilePhone,"011111111"),
+                            new Claim("FullName","Arash Mehdipour"),
+                        }
+                    }
                 })
                 .AddInMemoryApiResources(new List<ApiResource>()
                 {
