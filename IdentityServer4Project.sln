@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.31829.152
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer4Project", "IdentityServer4Project\IdentityServer4Project.csproj", "{B939684A-CCAC-45D1-81E4-76DED25D7902}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSiteClientMVC", "WebSiteClientMVC\WebSiteClientMVC.csproj", "{5AA6056E-6D50-45A8-82D7-C17700A88633}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{DD7ADA82-0347-4F26-924E-3E62B9FF245D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +19,16 @@ Global
 		{B939684A-CCAC-45D1-81E4-76DED25D7902}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B939684A-CCAC-45D1-81E4-76DED25D7902}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B939684A-CCAC-45D1-81E4-76DED25D7902}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AA6056E-6D50-45A8-82D7-C17700A88633}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AA6056E-6D50-45A8-82D7-C17700A88633}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AA6056E-6D50-45A8-82D7-C17700A88633}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AA6056E-6D50-45A8-82D7-C17700A88633}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5AA6056E-6D50-45A8-82D7-C17700A88633} = {DD7ADA82-0347-4F26-924E-3E62B9FF245D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {37F85D85-F81C-48E0-9843-4F9DBF22DFA1}
